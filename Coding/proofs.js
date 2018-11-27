@@ -1,4 +1,10 @@
 //////////
+// Closures are useful when:
+// 1. Emulating privates variables or encapsulation
+// 2. Making async server side calls
+// 3. Creating block-scoped variables
+//////////
+
 // Simple Closure
 function outside(num) {
     var remember = num;
@@ -16,10 +22,12 @@ r2();
 //////////
 // Closure
 var bankAccount = function bankAccount(initialBalance) {
+    // private variable ...
     var balance = initialBalance;
 
     return {
         getBalance: function () {
+            // accessed from within
             return balance;
         },
         deposit: function (amount) {
@@ -51,3 +59,34 @@ for (var i = 0; i < 3; i++) {
 for (var j = 0; j < 3; j++) {
     funcs[j]()
 }
+
+//////////
+//////////
+//////////
+
+//////////
+// https://codepen.io/alucidwolf/pen/rQJmdp?editors=1012
+// Prototypal Inheritance
+
+// create an object to be used like a class
+var classObject = function () {
+    console.log('very top, class object');
+}
+
+// add a method to the classObject
+classObject.classMethod = function () {
+    console.log('method on class object');
+}
+
+// create an instance of the classObject using 'new'
+var anotherObject = new classObject();
+anotherObject.classMethod = function () {
+    console.log('i do just what is required');
+}
+
+console.log('call 1');
+anotherObject.classMethod(); // call instance object method
+
+console.log('call 2');
+classObject.classMethod(); // call static object method
+
