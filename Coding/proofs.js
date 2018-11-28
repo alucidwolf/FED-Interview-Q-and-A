@@ -90,3 +90,11 @@ anotherObject.classMethod(); // call instance object method
 console.log('call 2');
 classObject.classMethod(); // call static object method
 
+// declare prototype so all instances created will have the static method
+classObject.prototype.classMethod = classObject.classMethod;
+
+console.log('call 3');
+anotherObject.classMethod(); // still calls the instance object method
+
+var finalObject = new classObject();
+finalObject.classMethod(); // this inherited the classObject method, classMethod
