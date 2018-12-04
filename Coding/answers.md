@@ -20,7 +20,33 @@ add(2, 5); // 7
 add(2)(5); // 7
 ```
 
-> By using a closure
+> By using a closure and currying
+```javascript
+function add(a, b) {
+    var result = function (b) {
+        return a + b;
+    }
+    if (typeof b === 'undefined') {
+        return result;
+    } else {
+        return result(b);
+    }
+}
+
+// es6
+const add = (a, b) => {
+    const result = (b) => a + b;
+    if (typeof b === 'undefined')
+        return result;
+    return result(b);
+}
+
+// more concise
+const add = (a, b) => (b || b === 'undefined') ? a + b : (b) => a + b;
+
+console.log(add(2)(5));
+console.log(add(2, 5));
+```
 
 *Question: What value is returned from the following statement?*
 ```javascript
