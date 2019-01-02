@@ -1,3 +1,5 @@
+"use strict";
+
 const health = {
     health: 1000
 }
@@ -73,9 +75,18 @@ const Druid = (opts) => {
     )
 }
 
+console.log(Druid.guild);
+
 const Verwin = Druid({
     guild: 'Exception'
 });
 
+const Gab = Druid({
+    guild: 'Denial'
+});
+
+Gab.health = increaseHp(Gab.health, 245);
+
 Verwin.shapeShift('cat');
-console.log(Verwin);
+console.log(Verwin.guild);
+console.log(Gab.guild);

@@ -11,13 +11,17 @@
 
 > depending on how eval is called, the binding will be changed to global or the calling execution context
 * Explain how prototypal inheritance works
+> Javascript has one construct when it comes to inheritance. Objects internally link to other objects, inheriting their prototypes. Creating a new object inherits from the base Object protoype giving us the ability to user methods on objects, similar to how Arrays let us use methods on them, which are inherited from their prototype. Null is the final link in the prototype chain as null has no prototype.
 
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
+  > It needs to be wrapped in parans, (function foo(){}());
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   * How would you go about checking for any of these states?
+  > By using typeof
 * What is a closure, and how/why would you use one?
+> A closure is when a function inside of a function has access to the variables in the outer function. This is useful when making private variables that other functions in your program can not access, but the inner function can still use the variables outside of it, but still within the wrapping function (princess story).
 * Can you describe the main difference between a `forEach` loop and a `.map()` loop and why you would pick one versus the other?
 * What's a typical use case for anonymous functions?
 * How do you organize your code? (module pattern, classical inheritance?)
@@ -32,10 +36,12 @@
 * Have you ever used JavaScript templating?
   * If so, what libraries have you used?
 * Explain "hoisting".
+> Function delcarations are put in memory during JIT compilation, so a function executed before the function is declared will still work. Initializations are not hoisted, such as logging a number to the console before it is init with var.
 * Describe event bubbling.
 * Describe event capturing.
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built-in JavaScript objects not a good idea?
+> It can modify the behavior of methods commonly used on objects when working with other team members
 * Difference between window load event and document DOMContentLoaded event?
 * What is the difference between `==` and `===`?
 * Explain the same-origin policy with regards to JavaScript.
